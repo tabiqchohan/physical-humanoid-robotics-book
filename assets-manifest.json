@@ -1,0 +1,202 @@
+{
+  "manifest_version": "1.0",
+  "book_title": "Physical AI & Humanoid Robotics",
+  "total_chapters": 18,
+  "total_assets": 54,
+  "assets": [
+    {
+      "id": "embodied-ai-concept",
+      "chapter": "introduction",
+      "filename": "embodied-ai-concept.png",
+      "type": "diagram",
+      "description": "Conceptual diagram showing the principles of embodied intelligence",
+      "dimensions": "800x600",
+      "required_for": "introduction/physical-ai-embodied-intelligence.md"
+    },
+    {
+      "id": "humanoid-anatomy",
+      "chapter": "fundamentals",
+      "filename": "humanoid-anatomy.png",
+      "type": "diagram",
+      "description": "Anatomical diagram of humanoid robot structure and joint configuration",
+      "dimensions": "800x600",
+      "required_for": "fundamentals/humanoid-robotics.md"
+    },
+    {
+      "id": "kinematics-diagram",
+      "chapter": "kinematics",
+      "filename": "kinematics-diagram.png",
+      "type": "diagram",
+      "description": "Forward and inverse kinematics illustration for humanoid limbs",
+      "dimensions": "800x600",
+      "required_for": "kinematics/kinematics-dynamics.md"
+    },
+    {
+      "id": "perception-system",
+      "chapter": "perception",
+      "filename": "perception-system.png",
+      "type": "diagram",
+      "description": "Multi-modal perception system architecture",
+      "dimensions": "800x600",
+      "required_for": "perception/perception-systems.md"
+    },
+    {
+      "id": "control-architecture",
+      "chapter": "control",
+      "filename": "control-architecture.png",
+      "type": "diagram",
+      "description": "Hierarchical control architecture for humanoid robots",
+      "dimensions": "800x600",
+      "required_for": "control/control-theory.md"
+    },
+    {
+      "id": "ml-physical-ai",
+      "chapter": "machine-learning",
+      "filename": "ml-physical-ai.png",
+      "type": "diagram",
+      "description": "Machine learning pipeline for physical AI systems",
+      "dimensions": "800x600",
+      "required_for": "machine-learning/ml-physical-ai.md"
+    },
+    {
+      "id": "planning-navigation",
+      "chapter": "planning",
+      "filename": "planning-navigation.png",
+      "type": "diagram",
+      "description": "Motion planning and navigation architecture",
+      "dimensions": "800x600",
+      "required_for": "planning/planning-navigation.md"
+    },
+    {
+      "id": "hri-interaction",
+      "chapter": "hri",
+      "filename": "hri-interaction.png",
+      "type": "diagram",
+      "description": "Human-robot interaction modalities and communication",
+      "dimensions": "800x600",
+      "required_for": "hri/hri-social-cognition.md"
+    },
+    {
+      "id": "simulation-environment",
+      "chapter": "simulation",
+      "filename": "simulation-environment.png",
+      "type": "diagram",
+      "description": "Simulation environment architecture and components",
+      "dimensions": "800x600",
+      "required_for": "simulation/simulation-env.md"
+    },
+    {
+      "id": "hardware-components",
+      "chapter": "hardware",
+      "filename": "hardware-components.png",
+      "type": "diagram",
+      "description": "Humanoid robot hardware components and actuation systems",
+      "dimensions": "800x600",
+      "required_for": "hardware/hardware-actuation.md"
+    },
+    {
+      "id": "cognitive-architecture",
+      "chapter": "cognitive-architectures",
+      "filename": "cognitive-architecture.png",
+      "type": "diagram",
+      "description": "Cognitive architecture for embodied agents",
+      "dimensions": "800x600",
+      "required_for": "cognitive-architectures/cognitive-arch.md"
+    },
+    {
+      "id": "safety-framework",
+      "chapter": "ethics",
+      "filename": "safety-framework.png",
+      "type": "diagram",
+      "description": "Safety and ethical framework for humanoid robotics",
+      "dimensions": "800x600",
+      "required_for": "ethics/ethics-safety.md"
+    },
+    {
+      "id": "healthcare-application",
+      "chapter": "healthcare",
+      "filename": "healthcare-application.png",
+      "type": "diagram",
+      "description": "Healthcare robotics application scenarios",
+      "dimensions": "800x600",
+      "required_for": "healthcare/healthcare-assistive.md"
+    },
+    {
+      "id": "industrial-robotics",
+      "chapter": "industrial",
+      "filename": "industrial-robotics.png",
+      "type": "diagram",
+      "description": "Industrial and service robotics applications",
+      "dimensions": "800x600",
+      "required_for": "industrial/industrial-service.md"
+    },
+    {
+      "id": "research-frontiers",
+      "chapter": "research-frontiers",
+      "filename": "research-frontiers.png",
+      "type": "diagram",
+      "description": "Current research frontiers and open challenges",
+      "dimensions": "800x600",
+      "required_for": "research-frontiers/research-challenges.md"
+    },
+    {
+      "id": "multi-robot-coordination",
+      "chapter": "multi-robot",
+      "filename": "multi-robot-coordination.png",
+      "type": "diagram",
+      "description": "Multi-robot coordination and communication",
+      "dimensions": "800x600",
+      "required_for": "multi-robot/multi-robot-coordination.md"
+    },
+    {
+      "id": "demonstration-learning",
+      "chapter": "learning-demonstrations",
+      "filename": "demonstration-learning.png",
+      "type": "diagram",
+      "description": "Learning from human demonstration process",
+      "dimensions": "800x600",
+      "required_for": "learning-demonstrations/learning-demonstrations.md"
+    },
+    {
+      "id": "future-integration",
+      "chapter": "future-directions",
+      "filename": "future-integration.png",
+      "type": "diagram",
+      "description": "Future integration scenarios and societal impact",
+      "dimensions": "800x600",
+      "required_for": "future-directions/future-integration.md"
+    },
+    {
+      "id": "3d-humanoid-model",
+      "chapter": "all",
+      "filename": "3d-humanoid-model.png",
+      "type": "3d-render",
+      "description": "3D render of humanoid robot for cover and chapter introductions",
+      "dimensions": "1200x800",
+      "required_for": "multiple files"
+    },
+    {
+      "id": "physical-ai-workflow",
+      "chapter": "all",
+      "filename": "physical-ai-workflow.png",
+      "type": "diagram",
+      "description": "Overall workflow diagram for Physical AI development",
+      "dimensions": "1200x800",
+      "required_for": "introduction and multiple chapters"
+    }
+  ],
+  "requirements": {
+    "minimum_resolution": "800x600",
+    "preferred_format": "PNG",
+    "alternative_formats": ["SVG", "JPG"],
+    "max_file_size_mb": 5,
+    "color_depth": "24-bit",
+    "accessibility_alt_text_required": true
+  },
+  "creation_notes": [
+    "All diagrams should be technically accurate and clearly labeled",
+    "3D renders should show realistic humanoid robot models",
+    "Charts and graphs should use consistent color schemes",
+    "All images must include proper attribution if using external sources"
+  ]
+}

@@ -1,0 +1,113 @@
+/**
+ * Copyright (c) 2017-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/* You can override the default Docusaurus styling here. */
+:root {
+  --ifm-color-primary: #25c2a0;
+  --ifm-color-primary-dark: #21af90;
+  --ifm-color-primary-darker: #1fa588;
+  --ifm-color-primary-darkest: #1a8870;
+  --ifm-color-primary-light: #29d5b0;
+  --ifm-color-primary-lighter: #32d8b4;
+  --ifm-color-primary-lightest: #4fddbf;
+  --ifm-code-font-size: 95%;
+}
+
+/* Custom styles for Physical AI & Humanoid Robotics documentation */
+.book-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.book-subtitle {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.chapter-outline {
+  background-color: #f8f9fa;
+  border-left: 4px solid var(--ifm-color-primary);
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.learning-outcomes {
+  background-color: #e8f4fd;
+  border: 1px solid #b3d9ff;
+  border-radius: 4px;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.learning-outcomes h3 {
+  margin-top: 0;
+  color: #0066cc;
+}
+
+.prerequisites {
+  background-color: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: 4px;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.prerequisites h3 {
+  margin-top: 0;
+  color: #d35400;
+}
+
+/* Math equation styling */
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* Mermaid diagram container */
+.mermaid {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+/* Code block enhancements */
+.code-block-mermaid {
+  text-align: center;
+}
+
+/* Table styling for better readability */
+.markdown table {
+  display: table;
+  width: 100%;
+}
+
+.markdown table th,
+.markdown table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid var(--ifm-table-border-color);
+}
+
+.markdown table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid var(--ifm-table-border-color);
+  background-color: var(--ifm-table-head-background);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .book-title {
+    font-size: 2rem;
+  }
+
+  .book-subtitle {
+    font-size: 1.2rem;
+  }
+}
