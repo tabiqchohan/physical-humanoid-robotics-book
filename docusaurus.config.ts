@@ -1,10 +1,10 @@
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import type { Config } from '@docusaurus/types';
+import { themes as prismThemes } from 'prism-react-renderer';
 
-// Prism themes
-import githubTheme from 'prism-react-renderer/themes/github';
-import draculaTheme from 'prism-react-renderer/themes/dracula';
+
+
 
 const config: Config = {
   title: 'Physical AI & Humanoid Robotics',
@@ -34,14 +34,17 @@ const config: Config = {
           rehypePlugins: [rehypeKatex],
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          path: 'docs',
+          include: ['**/*.md', '**/*.mdx'], // Include all markdown files
+          exclude: [], // Don't exclude any files for now
         },
-        blog: {
-          showReadingTime: true,
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-        },
+        blog: false, // Disable blog to reduce memory usage
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
+        },
+        sitemap: {
+          changefreq: 'weekly',
+          priority: 0.5,
         },
       },
     ],
@@ -96,9 +99,10 @@ const config: Config = {
     },
 
     prism: {
-      theme: githubTheme,
-      darkTheme: draculaTheme,
-    },
+  theme: prismThemes.github,
+  darkTheme: prismThemes.dracula,
+},
+
 
     colorMode: {
       defaultMode: 'light',
@@ -119,38 +123,45 @@ const config: Config = {
 
     mermaid: { theme: { dark: 'dark', light: 'default' }, options: {} },
 
-    // Algolia search plugin config with unique ID
-    algolia: {
-      appId: 'YOUR_APP_ID',
-      apiKey: 'YOUR_SEARCH_API_KEY',
-      indexName: 'YOUR_INDEX_NAME',
-    },
   },
 
   markdown: {
     mermaid: true,
     hooks: {
-      onBrokenMarkdownLinks: 'warn', // deprecated replacement
-      onBrokenMarkdownImages: 'warn', // ignore missing images
+      onBrokenMarkdownLinks: 'warn',
     },
   },
 
+  // Optimize memory usage
+  trailingSlash: true,
+  onBrokenLinks: 'warn',
+
   themes: [
     '@docusaurus/theme-mermaid',
+  ],
+
+  plugins: [
+    [require.resolve('docusaurus-plugin-image-zoom'), {}],
     [
-      '@docusaurus/theme-search-algolia',
+      '@docusaurus/plugin-client-redirects',
       {
-        id: 'default-search', // unique plugin ID
-        algolia: {
-          appId: 'YOUR_APP_ID',
-          apiKey: 'YOUR_SEARCH_API_KEY',
-          indexName: 'YOUR_INDEX_NAME',
-        },
+        redirects: [
+          {
+            to: '/',
+            from: ['/chat'], // In case we want to have a dedicated chat page
+          },
+        ],
       },
     ],
   ],
 
-  plugins: [[require.resolve('docusaurus-plugin-image-zoom'), {}]],
+  themes: [
+    '@docusaurus/theme-mermaid',
+  ],
+
+  clientModules: [
+    require.resolve('./src/Root.tsx'),
+  ],
 
   stylesheets: [
     {
