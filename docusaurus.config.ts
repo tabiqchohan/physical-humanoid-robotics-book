@@ -1,28 +1,24 @@
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+import type { Config } from '@docusaurus/types';
+
+// Prism themes
+import githubTheme from 'prism-react-renderer/themes/github';
+import draculaTheme from 'prism-react-renderer/themes/dracula';
 
 const config: Config = {
   title: 'Physical AI & Humanoid Robotics',
   tagline: 'The Future of Intelligent Machines',
   favicon: 'img/favicon.ico',
 
-  // Set the production url of your site here
   url: 'https://your-docusaurus-site.example.com',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/project-name/'
   baseUrl: '/',
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'your-github-org', // Usually your GitHub org/user name.
-  projectName: 'physical-ai-robotics', // Usually your repo name.
+  organizationName: 'your-github-org',
+  projectName: 'physical-ai-robotics',
 
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
 
-  // Even if you don't use internationalization, you can use this field to set useful
-  // metadata like html lang. For example, if your site is Chinese, you may want
-  // to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
@@ -36,13 +32,11 @@ const config: Config = {
           sidebarPath: require.resolve('./sidebars.js'),
           remarkPlugins: [remarkMath],
           rehypePlugins: [rehypeKatex],
-          // Please change this to your repo.  // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         blog: {
           showReadingTime: true,
-          // Please change this to your repo.  // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
@@ -54,8 +48,8 @@ const config: Config = {
   ],
 
   themeConfig: {
-    // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
+
     navbar: {
       title: 'Physical AI & Humanoid Robotics',
       logo: {
@@ -69,7 +63,7 @@ const config: Config = {
           position: 'left',
           label: 'Book',
         },
-        {to: '/blog', label: 'Blog', position: 'left'},
+        { to: '/blog', label: 'Blog', position: 'left' },
         {
           href: 'https://github.com/facebook/docusaurus',
           label: 'GitHub',
@@ -77,70 +71,87 @@ const config: Config = {
         },
       ],
     },
+
     footer: {
       style: 'dark',
       links: [
-        {
-          title: 'Docs',
-          items: [
-            {
-              label: 'Book',
-              to: '/docs/intro',
-            },
-          ],
-        },
+        { title: 'Docs', items: [{ label: 'Book', to: '/docs/intro' }] },
         {
           title: 'Community',
           items: [
-            {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
-            },
+            { label: 'Stack Overflow', href: 'https://stackoverflow.com/questions/tagged/docusaurus' },
+            { label: 'Discord', href: 'https://discordapp.com/invite/docusaurus' },
+            { label: 'Twitter', href: 'https://twitter.com/docusaurus' },
           ],
         },
         {
           title: 'More',
           items: [
-            {
-              label: 'Blog',
-              to: '/blog',
-            },
-            {
-              label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
-            },
+            { label: 'Blog', to: '/blog' },
+            { label: 'GitHub', href: 'https://github.com/facebook/docusaurus' },
           ],
         },
       ],
       copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
     },
+
     prism: {
-      theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
+      theme: githubTheme,
+      darkTheme: draculaTheme,
+    },
+
+    colorMode: {
+      defaultMode: 'light',
+      disableSwitch: false,
+      respectPrefersColorScheme: false,
+    },
+
+    docs: {
+      versionPersistence: 'localStorage',
+      sidebar: { hideable: false, autoCollapseCategories: false },
+    },
+
+    blog: { sidebar: { groupByYear: true } },
+
+    metadata: [],
+
+    tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 3 },
+
+    mermaid: { theme: { dark: 'dark', light: 'default' }, options: {} },
+
+    // Algolia search plugin config with unique ID
+    algolia: {
+      appId: 'YOUR_APP_ID',
+      apiKey: 'YOUR_SEARCH_API_KEY',
+      indexName: 'YOUR_INDEX_NAME',
     },
   },
+
   markdown: {
     mermaid: true,
+    hooks: {
+      onBrokenMarkdownLinks: 'warn', // deprecated replacement
+      onBrokenMarkdownImages: 'warn', // ignore missing images
+    },
   },
-  themes: ['@docusaurus/theme-mermaid'],
-  // Add these plugins for enhanced functionality
-  plugins: [
-    require.resolve('@docusaurus/remark-plugin-math'),
-    [require.resolve('docusaurus-plugin-image-zoom'), {}],
-    [require.resolve('docusaurus-theme-search-algolia'), {
-      algoliaAppId: 'YOUR_APP_ID', // Replace with your Algolia App ID
-      algoliaApiKey: 'YOUR_SEARCH_API_KEY', // Replace with your Algolia Search API Key
-      algoliaIndexName: 'YOUR_INDEX_NAME', // Replace with your Algolia Index Name
-    }],
+
+  themes: [
+    '@docusaurus/theme-mermaid',
+    [
+      '@docusaurus/theme-search-algolia',
+      {
+        id: 'default-search', // unique plugin ID
+        algolia: {
+          appId: 'YOUR_APP_ID',
+          apiKey: 'YOUR_SEARCH_API_KEY',
+          indexName: 'YOUR_INDEX_NAME',
+        },
+      },
+    ],
   ],
+
+  plugins: [[require.resolve('docusaurus-plugin-image-zoom'), {}]],
+
   stylesheets: [
     {
       href: 'https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css',

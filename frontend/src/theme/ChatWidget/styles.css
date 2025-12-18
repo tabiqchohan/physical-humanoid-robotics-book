@@ -1,0 +1,22 @@
+.chat-widget-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 350px;
+  height: 500px;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .chat-widget-container {
+    width: calc(100% - 40px);
+    height: 50vh;
+    bottom: 20px;
+    right: 20px;
+    left: 20px;
+  }
+}

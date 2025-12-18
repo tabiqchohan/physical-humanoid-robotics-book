@@ -36,10 +36,3 @@ class RobotArm:
 my_robot = RobotArm(num_joints=7)
 my_robot.set_joint_angle(0, np.pi/4)
 print(my_robot.get_end_effector_pose())
-```
-
-:::tip
-Always start with a simplified model of your robot and environment in simulations before adding complexity. This helps in isolating issues and understanding fundamental behaviors.
-:::
-
-![Robot Arm Architecture Diagram](./assets/chapter1_robot_arm_architecture.png)

@@ -1,0 +1,34 @@
+.source-citation {
+  padding: 8px 12px;
+  background-color: #e8f5e9;
+  border-left: 3px solid #4caf50;
+  margin-top: 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.source-title {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.source-title a {
+  color: #2e7d32;
+  text-decoration: none;
+}
+
+.source-title a:hover {
+  text-decoration: underline;
+}
+
+.source-content {
+  color: #555;
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+.source-confidence {
+  font-size: 11px;
+  color: #757575;
+  font-style: italic;
+}
