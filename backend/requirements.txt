@@ -1,0 +1,11 @@
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+cohere==4.34
+qdrant-client==1.9.1
+pydantic==2.5.0
+pydantic-settings==2.1.0
+python-dotenv==1.0.0
+pytest==7.4.3
+httpx==0.25.2
+python-json-logger==2.0.7
+slowapi==0.1.9

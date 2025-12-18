@@ -1,4 +1,4 @@
-# Claude Code Rules
+﻿# Claude Code Rules
 
 This file is generated during init for the selected agent.
 
@@ -195,6 +195,23 @@ If ALL true, suggest:
    Document reasoning and tradeoffs? Run `/sp.adr [decision-title]`
 
 Wait for consent; never auto-create ADRs. Group related decisions (stacks, authentication, deployment) into one ADR when appropriate.
+
+## Active Technologies
+- Python 3.11 + Cohere Python SDK, Qdrant Python client, FastAPI, Pydantic (001-rag-retrieval-validation)
+- Qdrant vector database (external cloud service) (001-rag-retrieval-validation)
+- Python 3.12 + FastAPI, OpenAI Agent SDK, Cohere Python SDK, Qdrant Python client, Pydantic (003-rag-chatbot-backend)
+
+- Python 3.11+ (2-rag-knowledge-ingestion)
+- Cohere Python SDK (2-rag-knowledge-ingestion)
+- Qdrant Python client (2-rag-knowledge-ingestion)
+- requests + BeautifulSoup4 (2-rag-knowledge-ingestion)
+- python-dotenv (2-rag-knowledge-ingestion)
+
+## Recent Changes
+
+- 2-rag-knowledge-ingestion: Added Python 3.11+ + Cohere Python SDK + Qdrant Python client
+- 1-physical-ai-robotics-book: Added Docusaurus documentation framework
+- main: Initial project setup with Claude Code
 
 ## Basic Project Structure
 

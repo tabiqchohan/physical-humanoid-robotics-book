@@ -1,0 +1,230 @@
+openapi: 3.0.0
+info:
+  title: RAG Chatbot API
+  description: API for RAG-based question answering system
+  version: 1.0.0
+servers:
+  - url: http://localhost:8000
+    description: Development server
+  - url: https://api.example.com
+    description: Production server
+
+paths:
+  /api/chat/query:
+    post:
+      summary: Submit a query to the RAG system
+      description: Sends a user query to the RAG backend for processing and returns a response with source citations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryRequest'
+      responses:
+        '200':
+          description: Successful response from the RAG system
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryResponse'
+        '400':
+          description: Bad request - invalid query format
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api/chat/query-selected-text:
+    post:
+      summary: Submit a query about selected text
+      description: Sends a query specifically about selected text context to the RAG backend
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SelectedTextQueryRequest'
+      responses:
+        '200':
+          description: Successful response from the RAG system
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryResponse'
+        '400':
+          description: Bad request - invalid query or context format
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+  /api/chat/health:
+    get:
+      summary: Health check for the RAG system
+      description: Returns the health status of the RAG system and its dependencies
+      responses:
+        '200':
+          description: Health status of the system
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+
+components:
+  schemas:
+    QueryRequest:
+      type: object
+      required:
+        - query
+      properties:
+        query:
+          type: string
+          description: The user's question
+          example: "What are the key principles of Physical AI?"
+        context:
+          type: string
+          description: Optional context from selected text
+          example: "Embodiment as Intelligence principle states that true intelligence is deeply intertwined with physical interaction..."
+        sessionId:
+          type: string
+          description: Optional session identifier for conversation history
+          example: "session-123"
+        userId:
+          type: string
+          description: Optional user identifier
+          example: "user-456"
+
+    SelectedTextQueryRequest:
+      type: object
+      required:
+        - query
+        - context
+      properties:
+        query:
+          type: string
+          description: The user's question about the selected text
+          example: "Can you explain this concept in more detail?"
+        context:
+          type: string
+          description: The selected text that provides context for the query
+          example: "Embodiment as Intelligence principle states that true intelligence is deeply intertwined with physical interaction..."
+        sessionId:
+          type: string
+          description: Optional session identifier for conversation history
+          example: "session-123"
+
+    QueryResponse:
+      type: object
+      required:
+        - response
+        - sources
+        - sessionId
+        - timestamp
+      properties:
+        response:
+          type: string
+          description: The AI-generated response to the query
+          example: "The key principles of Physical AI include embodiment as intelligence, integrated intelligence, and adaptability..."
+        sources:
+          type: array
+          items:
+            $ref: '#/components/schemas/SourceMetadata'
+          description: Array of sources used to generate the response
+        sessionId:
+          type: string
+          description: Session identifier for conversation continuity
+          example: "session-123"
+        timestamp:
+          type: string
+          format: date-time
+          description: ISO timestamp of the response
+          example: "2025-12-18T10:30:00Z"
+
+    SourceMetadata:
+      type: object
+      required:
+        - title
+        - url
+        - content
+        - score
+      properties:
+        title:
+          type: string
+          description: Title of the source document
+          example: "Physical AI Principles"
+        url:
+          type: string
+          format: uri
+          description: URL to the source location
+          example: "/docs/physical-ai/principles"
+        content:
+          type: string
+          description: Relevant excerpt from the source
+          example: "Embodiment as Intelligence: The belief that true intelligence is deeply intertwined with physical interaction and experience in the world."
+        score:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 1
+          description: Relevance score from vector search
+          example: 0.92
+        page:
+          type: integer
+          description: Page number if applicable
+          example: 15
+
+    ErrorResponse:
+      type: object
+      required:
+        - error
+        - message
+      properties:
+        error:
+          type: string
+          description: Error code
+          example: "QUERY_PROCESSING_ERROR"
+        message:
+          type: string
+          description: Human-readable error message
+          example: "Failed to process the query due to backend error"
+
+    HealthResponse:
+      type: object
+      required:
+        - status
+        - backend
+        - vector_db
+        - timestamp
+      properties:
+        status:
+          type: string
+          enum: [healthy, degraded, unavailable]
+          description: Overall health status
+          example: "healthy"
+        backend:
+          type: string
+          enum: [available, unavailable]
+          description: Backend service availability
+          example: "available"
+        vector_db:
+          type: string
+          enum: [connected, disconnected]
+          description: Vector database connection status
+          example: "connected"
+        timestamp:
+          type: string
+          format: date-time
+          description: ISO timestamp of the health check
+          example: "2025-12-18T10:30:00Z"
