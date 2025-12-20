@@ -107,6 +107,6 @@ public:
 Always implement redundancy in critical perception systems. A humanoid robot relying on a single sensor modality for safety-critical functions is vulnerable to sensor failures. Design perception systems with multiple modalities that can cross-validate and provide backup information when primary sensors fail.
 
 
-![Perception System Diagram](./assets/perception-system.png)
+# ![Perception System Diagram](./assets/perception-system.png)
 
 Effective perception systems enable humanoid robots to operate safely and effectively in unstructured environments, providing the sensory foundation necessary for intelligent physical interaction with the world.
