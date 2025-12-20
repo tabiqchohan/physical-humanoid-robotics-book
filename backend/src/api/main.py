@@ -42,9 +42,11 @@ app.add_middleware(
 
 # Include API routes
 from .routes import health, retrieval
+from . import chat
 
 app.include_router(health.router, prefix="", tags=["health"])
 app.include_router(retrieval.router, prefix="", tags=["retrieval"])
+app.include_router(chat.router, prefix="", tags=["chat"])
 
 
 # Health check endpoint is included via the health router

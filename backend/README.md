@@ -216,3 +216,17 @@ The backend consists of the following main components:
 - Performance monitoring and metrics
 - Error handling with appropriate HTTP status codes
 - OpenAI Agent SDK compatibility
+- Deployable on cloud platforms (Railway, Hugging Face Spaces)
+
+## Deployment
+
+### Railway Deployment
+The application is pre-configured for Railway deployment using the provided `Dockerfile` and `Procfile`.
+
+### Hugging Face Spaces Deployment
+For Hugging Face Spaces deployment, refer to the `HUGGINGFACE_DEPLOYMENT_GUIDE.md` file for detailed instructions.
+
+The application can be deployed to Hugging Face Spaces using:
+- The provided `Dockerfile.hf`
+- Environment variables for API keys and configuration
+- The `app.py` entry point for Hugging Face compatibility
