@@ -55,6 +55,6 @@ When designing embodied systems, consider that the physical form itself can serv
 
 
 
-![Embodied AI Concept](./assets/embodied-ai-concept.png)
+# ![Embodied AI Concept](./assets/embodied-ai-concept.png)
 
 This foundational understanding of Physical AI and embodied intelligence provides the basis for more complex robotic systems that we will explore throughout this book. The tight coupling between perception, action, and environmental interaction creates opportunities for developing more robust and adaptive artificial intelligence systems.
