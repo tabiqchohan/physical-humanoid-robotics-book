@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG Chatbot Frontend</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .chat-container {
+            margin-top: 20px;
+        }
+        .query-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .response {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            border-left: 4px solid #007bff;
+        }
+        .status {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .loading {
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>RAG Chatbot Integration</h1>
+        <p>This page demonstrates the connection between the frontend and the backend RAG API.</p>
+
+        <div class="status" id="status">
+            <strong>Status:</strong> <span id="status-text">Checking backend connection...</span>
+        </div>
+
+        <div class="chat-container">
+            <h3>Chat with the RAG System</h3>
+            <textarea
+                class="query-input"
+                id="queryInput"
+                placeholder="Enter your question about Physical AI & Humanoid Robotics..."
+                rows="3"
+            ></textarea>
+            <br>
+            <button class="btn" onclick="sendQuery()">Send Query</button>
+            <button class="btn" onclick="testHealth()">Test Health</button>
+        </div>
+
+        <div id="responseContainer"></div>
+    </div>
+
+    <script>
+        // Test backend connection on page load
+        window.onload = function() {
+            testHealth();
+        };
+
+        // Test health endpoint
+        async function testHealth() {
+            const statusText = document.getElementById('status-text');
+            statusText.textContent = 'Testing backend connection...';
+
+            try {
+                const response = await fetch('http://localhost:8000/health');
+                const data = await response.json();
+
+                if (response.ok && data.status === 'healthy') {
+                    statusText.innerHTML = `✅ Backend is running (Version: ${data.version})`;
+                    document.getElementById('status').className = 'status success';
+                } else {
+                    statusText.textContent = '❌ Backend is not responding properly';
+                    document.getElementById('status').className = 'status error';
+                }
+            } catch (error) {
+                console.error('Health check failed:', error);
+                statusText.textContent = '❌ Cannot connect to backend. Make sure the backend server is running on http://localhost:8000';
+                document.getElementById('status').className = 'status error';
+            }
+        }
+
+        // Send query to backend
+        async function sendQuery() {
+            const queryInput = document.getElementById('queryInput');
+            const responseContainer = document.getElementById('responseContainer');
+            const query = queryInput.value.trim();
+
+            if (!query) {
+                alert('Please enter a query');
+                return;
+            }
+
+            // Show loading state
+            responseContainer.innerHTML = '<div class="response loading">Processing your query...</div>';
+
+            try {
+                // Try the search endpoint instead of chat endpoint
+                const response = await fetch('http://localhost:8000/retrieval/search', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        query: query,
+                        top_k: 3
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API error: ${response.status} - ${response.statusText}`);
+                }
+
+                const data = await response.json();
+
+                responseContainer.innerHTML = `
+                    <div class="response">
+                        <h4>Search Results:</h4>
+                        <p>Original query: "${data.query}"</p>
+                        <p>Total results: ${data.total_results}</p>
+                        <p>Processing time: ${data.processing_time} seconds</p>
+                        ${data.results && data.results.length > 0 ? `
+                            <h5>Top Results:</h5>
+                            <ul>
+                                ${data.results.slice(0, 3).map(result => `
+                                    <li>
+                                        <strong>Score: ${result.score}</strong><br>
+                                        Content: ${result.content.substring(0, 200)}${result.content.length > 200 ? '...' : ''}
+                                        ${result.metadata ? `<br>Metadata: ${JSON.stringify(result.metadata)}` : ''}
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        ` : '<p>No results found for this query.</p>'}
+                        <small>Request ID: ${data.request_id}</small><br>
+                        <small>Status: ${data.status}</small>
+                    </div>
+                `;
+            } catch (error) {
+                console.error('Query failed:', error);
+                responseContainer.innerHTML = `
+                    <div class="response">
+                        <h4>Error:</h4>
+                        <p>Failed to get response from backend: ${error.message}</p>
+                        <p>This may be due to:</p>
+                        <ul>
+                            <li>Qdrant database connection issues</li>
+                            <li>API compatibility problems</li>
+                            <li>Missing or invalid API keys</li>
+                        </ul>
+                        <p>Check the backend logs for more details.</p>
+                    </div>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

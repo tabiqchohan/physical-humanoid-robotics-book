@@ -101,6 +101,5 @@ When implementing inverse kinematics for humanoid robots, consider using optimiz
 
 
 
-<!-- ![Kinematics Diagram](/assets/kinematics-diagram.png) -->
 
 The mathematical tools for kinematics and dynamics enable precise control of humanoid robots, allowing them to perform complex tasks while maintaining stability and safety. These principles form the foundation for more advanced control strategies and motion planning algorithms.

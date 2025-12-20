@@ -137,6 +137,5 @@ When implementing reinforcement learning for physical robots, always start with 
 
 
 
-# ![ML for Physical AI](/assets/ml-physical-ai.png)
 
 The integration of machine learning with physical systems enables robots to adapt and improve their performance through experience, making them more capable and robust in real-world applications.

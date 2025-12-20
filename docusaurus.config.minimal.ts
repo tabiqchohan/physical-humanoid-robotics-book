@@ -1,10 +1,4 @@
-import remarkMath from 'remark-math';
-import rehypeKatex from 'rehype-katex';
 import type { Config } from '@docusaurus/types';
-import { themes as prismThemes } from 'prism-react-renderer';
-
-
-
 
 const config: Config = {
   title: 'Physical AI & Humanoid Robotics',
@@ -17,7 +11,8 @@ const config: Config = {
   organizationName: 'your-github-org',
   projectName: 'physical-ai-robotics',
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn', // Changed from 'throw' to reduce memory usage
+  onBrokenMarkdownLinks: 'warn',
 
   i18n: {
     defaultLocale: 'en',
@@ -31,21 +26,15 @@ const config: Config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           // Removed math plugins to reduce memory usage
-          // remarkPlugins: [remarkMath],
-          // rehypePlugins: [rehypeKatex],
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
           path: 'docs',
-          include: ['**/*.md', '**/*.mdx'], // Include all markdown files
-          exclude: [], // Don't exclude any files for now
+          include: ['**/*.md', '**/*.mdx'],
+          exclude: [],
         },
-        blog: false, // Disable blog to reduce memory usage
+        blog: false, // Disabled blog to reduce memory usage
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
-        },
-        sitemap: {
-          changefreq: 'weekly',
-          priority: 0.5,
         },
       },
     ],
@@ -67,7 +56,6 @@ const config: Config = {
           position: 'left',
           label: 'Book',
         },
-        { to: '/blog', label: 'Blog', position: 'left' },
         {
           href: 'https://github.com/facebook/docusaurus',
           label: 'GitHub',
@@ -91,7 +79,6 @@ const config: Config = {
         {
           title: 'More',
           items: [
-            { label: 'Blog', to: '/blog' },
             { label: 'GitHub', href: 'https://github.com/facebook/docusaurus' },
           ],
         },
@@ -100,80 +87,22 @@ const config: Config = {
     },
 
     prism: {
-  theme: prismThemes.github,
-  darkTheme: prismThemes.dracula,
-},
-
-
-    colorMode: {
-      defaultMode: 'light',
-      disableSwitch: false,
-      respectPrefersColorScheme: false,
-    },
-
-    docs: {
-      versionPersistence: 'localStorage',
-      sidebar: { hideable: false, autoCollapseCategories: false },
-    },
-
-    blog: { sidebar: { groupByYear: true } },
-
-    metadata: [],
-
-    tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 3 },
-
-    mermaid: { theme: { dark: 'dark', light: 'default' }, options: {} },
-
-  },
-
-  markdown: {
-    hooks: {
-      onBrokenMarkdownImages: 'warn', // Show warning instead of error for broken images
-      onBrokenMarkdownLinks: 'warn',
+      theme: require('prism-react-renderer').themes.github,
+      darkTheme: require('prism-react-renderer').themes.dracula,
     },
   },
 
-
-  // Optimize memory usage
+  // Reduced features to save memory
   trailingSlash: true,
   onBrokenLinks: 'warn',
 
+  plugins: [
+    // Removed client redirects to save memory
+  ],
+
   themes: [
-    '@docusaurus/theme-mermaid',
+    // Removed mermaid theme to save memory
   ],
-
-  // Temporarily disabled plugins to reduce memory usage
-  // plugins: [
-  //   [require.resolve('docusaurus-plugin-image-zoom'), {}],
-  //   [
-  //     '@docusaurus/plugin-client-redirects',
-  //     {
-  //       redirects: [
-  //         {
-  //           to: '/',
-  //           from: ['/chat'], // In case we want to have a dedicated chat page
-  //         },
-  //       ],
-  //     },
-  //   ],
-  // ],
-
-  // themes: [
-  //   '@docusaurus/theme-mermaid',
-  // ],
-
-  clientModules: [
-    require.resolve('./src/Root.tsx'),
-  ],
-
-  // stylesheets: [
-  //   {
-  //     href: 'https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css',
-  //     integrity:
-  //       'sha384-Um5gpz1odJg5bR4acIgFfFYsebxPIRVkeMmKcVwLWeMyNDxUHWahFqDNTPYLt2VBL',
-  //     crossorigin: 'anonymous',
-  //   },
-  // ],
 };
 
 export default config;
