@@ -60,4 +60,4 @@ if __name__ == "__main__":
 When designing grippers, consider both force closure (preventing object movement) and form closure (conforming to object shape) to achieve robust grasps.
 :::
 
-![Robot Gripper Design Concepts](./assets/chapter4_gripper_design.png)
+![Robot Gripper Design Concepts](/assets/chapter4_gripper_design.png)

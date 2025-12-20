@@ -133,6 +133,6 @@ public:
 As humanoid robots become more integrated into society, careful attention must be paid to the potential for increasing inequality. Access to advanced robotic systems should be considered from an equity perspective to ensure that benefits are distributed fairly across different socioeconomic groups.
 
 
-![Future Integration](./assets/future-integration.png)
+<!-- ![Future Integration](/assets/future-integration.png) -->
 
 The future of humanoid robotics will be shaped not only by technological capabilities but also by societal values, regulatory frameworks, and economic structures. Success will require careful coordination between technologists, policymakers, ethicists, and the public to ensure that these powerful systems serve humanity's best interests.

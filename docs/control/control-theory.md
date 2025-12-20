@@ -112,6 +112,6 @@ For humanoid balance control, consider implementing a cascaded control architect
 
 
 
-![Control Architecture](./assets/control-architecture.png)
+![Control Architecture](/assets/control-architecture.png)
 
 Advanced control techniques enable humanoid robots to achieve stable, efficient, and safe operation in complex environments while performing a wide range of tasks.

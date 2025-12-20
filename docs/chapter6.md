@@ -70,4 +70,4 @@ print("HRI conceptual example finished.")
 When designing human-robot interactions, prioritize clear communication of the robot's intentions and capabilities to build user trust and prevent frustration.
 :::
 
-![Human-Robot Collaboration Workflow](./assets/chapter6_hri_workflow.png)
+![Human-Robot Collaboration Workflow](/assets/chapter6_hri_workflow.png)

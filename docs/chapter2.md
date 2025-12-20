@@ -52,4 +52,4 @@ int main() {
 Singularities are configurations where a robot loses one or more degrees of freedom, making inverse kinematics problematic. Always consider singularity avoidance in path planning.
 :::
 
-![2-DOF Robot Arm Kinematics Diagram](./assets/chapter2_kinematics_diagram.png)
+![2-DOF Robot Arm Kinematics Diagram](/assets/chapter2_kinematics_diagram.png)

@@ -48,4 +48,4 @@ print(f"Final orientation (quaternion): {imu.orientation.as_quat()}")
 When selecting sensors for a robotic system, consider the trade-offs between cost, accuracy, update rate, and environmental robustness. No single sensor is perfect for all scenarios.
 :::
 
-![Sensor Fusion Architecture Diagram](./assets/chapter3_sensor_fusion.png)
+![Sensor Fusion Architecture Diagram](/assets/chapter3_sensor_fusion.png)

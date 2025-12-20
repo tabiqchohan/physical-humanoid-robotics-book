@@ -26,6 +26,11 @@ class Settings(BaseSettings):
     host: str = "0.0.0.0"
     port: int = 8000
 
+    # App Information
+    app_name: str = "RAG Retrieval Validation API"
+    app_version: str = "1.0.0"
+    debug: bool = True
+
     model_config = {"env_file": ".env", "env_prefix": "", "case_sensitive": False}
 
 

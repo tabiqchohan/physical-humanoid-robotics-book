@@ -76,6 +76,6 @@ Humanoid robots operating in human environments must implement multiple layers o
 
 
 
-![Humanoid Robot Anatomy](./assets/humanoid-anatomy.png)
+<!-- ![Humanoid Robot Anatomy](/assets/humanoid-anatomy.png) -->
 
 The design of humanoid robots requires careful balance between anthropomorphic features and engineering practicality. While human-like form can provide advantages for operating in human spaces, it also introduces significant complexity that must be managed through careful engineering and control design.

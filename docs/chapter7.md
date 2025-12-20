@@ -79,4 +79,4 @@ int main() {
 Neglecting ethical considerations in AI and robotics development can lead to unintended societal harms, loss of public trust, and regulatory backlashes. Integrate ethics from design to deployment.
 :::
 
-![Robot Safety Zones Diagram](./assets/chapter7_safety_zones.png)
+![Robot Safety Zones Diagram](/assets/chapter7_safety_zones.png)

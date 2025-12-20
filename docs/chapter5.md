@@ -72,4 +72,4 @@ print("SimpleRobotEnv interacted successfully.")
 Designing effective reward functions is crucial yet challenging in RL. Poorly designed rewards can lead to unexpected behaviors or impede learning, a phenomenon known as "reward hacking."
 :::
 
-![Reinforcement Learning Loop Diagram](./assets/chapter5_rl_loop.png)
+![Reinforcement Learning Loop Diagram](/assets/chapter5_rl_loop.png)

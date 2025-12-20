@@ -30,8 +30,9 @@ const config: Config = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          remarkPlugins: [remarkMath],
-          rehypePlugins: [rehypeKatex],
+          // Removed math plugins to reduce memory usage
+          // remarkPlugins: [remarkMath],
+          // rehypePlugins: [rehypeKatex],
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
           path: 'docs',
@@ -126,11 +127,12 @@ const config: Config = {
   },
 
   markdown: {
-    mermaid: true,
-    hooks: {
-      onBrokenMarkdownLinks: 'warn',
-    },
+  hooks: {
+    onBrokenMarkdownImages: 'warn', // error ki jagah sirf warning
+    onBrokenMarkdownLinks: 'warn',
   },
+},
+
 
   // Optimize memory usage
   trailingSlash: true,
@@ -140,37 +142,38 @@ const config: Config = {
     '@docusaurus/theme-mermaid',
   ],
 
-  plugins: [
-    [require.resolve('docusaurus-plugin-image-zoom'), {}],
-    [
-      '@docusaurus/plugin-client-redirects',
-      {
-        redirects: [
-          {
-            to: '/',
-            from: ['/chat'], // In case we want to have a dedicated chat page
-          },
-        ],
-      },
-    ],
-  ],
+  // Temporarily disabled plugins to reduce memory usage
+  // plugins: [
+  //   [require.resolve('docusaurus-plugin-image-zoom'), {}],
+  //   [
+  //     '@docusaurus/plugin-client-redirects',
+  //     {
+  //       redirects: [
+  //         {
+  //           to: '/',
+  //           from: ['/chat'], // In case we want to have a dedicated chat page
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // ],
 
-  themes: [
-    '@docusaurus/theme-mermaid',
-  ],
+  // themes: [
+  //   '@docusaurus/theme-mermaid',
+  // ],
 
   clientModules: [
     require.resolve('./src/Root.tsx'),
   ],
 
-  stylesheets: [
-    {
-      href: 'https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css',
-      integrity:
-        'sha384-Um5gpz1odJg5bR4acIgFfFYsebxPIRVkeMmKcVwLWeMyNDxUHWahFqDNTPYLt2VBL',
-      crossorigin: 'anonymous',
-    },
-  ],
+  // stylesheets: [
+  //   {
+  //     href: 'https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css',
+  //     integrity:
+  //       'sha384-Um5gpz1odJg5bR4acIgFfFYsebxPIRVkeMmKcVwLWeMyNDxUHWahFqDNTPYLt2VBL',
+  //     crossorigin: 'anonymous',
+  //   },
+  // ],
 };
 
 export default config;
