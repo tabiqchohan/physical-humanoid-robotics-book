@@ -125,12 +125,13 @@ const config: Config = {
 
   },
 
-  markdown: {
-    mermaid: true,
-    hooks: {
-      onBrokenMarkdownLinks: 'warn',
-    },
+markdown: {
+  hooks: {
+    onBrokenMarkdownImages: 'warn',
+    onBrokenMarkdownLinks: 'warn',
   },
+},
+
 
   // Optimize memory usage
   trailingSlash: true,
