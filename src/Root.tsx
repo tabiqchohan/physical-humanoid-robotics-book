@@ -6,7 +6,7 @@ type RootProps = { children: React.ReactNode };
 export default function Root({ children }: RootProps) {
   const [isClient, setIsClient] = useState(false);
 
-  // Only render ChatWidget in browser
+  // Only render ChatWidget on browser
   useEffect(() => setIsClient(true), []);
 
   return (
