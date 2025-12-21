@@ -11,7 +11,7 @@ const ChatWidget = () => {
 
   useEffect(() => setIsClient(true), []);
 
-  if (!isClient) return null; // Do not render during SSR
+  if (!isClient) return null; // Do not render on server
 
   return (
     <ChatProvider>
