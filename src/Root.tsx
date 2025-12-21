@@ -1,5 +1,4 @@
-// src/Root.tsx
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ChatWidget from '@theme/ChatWidget';
 
 type RootProps = {
@@ -7,16 +6,20 @@ type RootProps = {
 };
 
 export default function Root({ children }: RootProps) {
-  // Backend URL safe, TypeScript friendly
-  const backendUrl =
-    import.meta.env.REACT_APP_BACKEND_URL || "https://tabiqchohan-rag-chatbot.hf.space";
+  const [isClient, setIsClient] = useState(false);
 
-  console.log("Chatbot backend URL:", backendUrl);
+  // Ensure widget only renders on client (browser)
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  // Backend URL fallback
+  const backendUrl = import.meta.env.REACT_APP_BACKEND_URL || "https://tabiqchohan-rag-chatbot.hf.space";
 
   return (
     <>
       {children}
-      <ChatWidget backendUrl={backendUrl} />
+      {isClient && <ChatWidget backendUrl={backendUrl} />}
     </>
   );
 }
