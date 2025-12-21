@@ -40,12 +40,14 @@ cd backend
 uvicorn src.api.main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
-The API will be available at `http://localhost:8000`
+The API will be available at `https://tabiqchohan-rag-chatbot.hf.space` (when deployed) or `http://localhost:8000` (for local development)
 
 ### Verify Installation
 Check that the server is running:
 ```bash
-curl http://localhost:8000/health
+curl https://tabiqchohan-rag-chatbot.hf.space/health  # For deployed version
+# or
+curl http://localhost:8000/health  # For local development
 ```
 
 Expected response:
@@ -62,6 +64,14 @@ Expected response:
 Send a query to retrieve relevant document chunks:
 
 ```bash
+curl -X POST https://tabiqchohan-rag-chatbot.hf.space/retrieval/search \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": "What are the benefits of renewable energy?",
+    "top_k": 3,
+    "similarity_threshold": 0.5
+  }'
+# or for local development:
 curl -X POST http://localhost:8000/retrieval/search \
   -H "Content-Type: application/json" \
   -d '{
@@ -75,6 +85,12 @@ curl -X POST http://localhost:8000/retrieval/search \
 Validate a query before processing:
 
 ```bash
+curl -X POST https://tabiqchohan-rag-chatbot.hf.space/retrieval/validate \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": "What are the benefits of renewable energy?"
+  }'
+# or for local development:
 curl -X POST http://localhost:8000/retrieval/validate \
   -H "Content-Type: application/json" \
   -d '{
@@ -103,10 +119,16 @@ def search_knowledge_base(query: str, top_k: int = 5) -> dict:
     Returns:
         Dictionary containing search results
     """
+    # For deployed version:
     response = requests.post(
-        "http://localhost:8000/retrieval/search",
+        "https://tabiqchohan-rag-chatbot.hf.space/retrieval/search",
         json={"query": query, "top_k": top_k}
     )
+    # For local development, use:
+    # response = requests.post(
+    #     "http://localhost:8000/retrieval/search",
+    #     json={"query": query, "top_k": top_k}
+    # )
     return response.json()
 
 # Register the function with OpenAI

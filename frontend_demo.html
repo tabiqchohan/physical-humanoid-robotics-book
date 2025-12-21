@@ -104,7 +104,7 @@
             statusText.textContent = 'Testing backend connection...';
 
             try {
-                const response = await fetch('http://localhost:8000/health');
+                const response = await fetch('https://tabiqchohan-rag-chatbot.hf.space/health');
                 const data = await response.json();
 
                 if (response.ok && data.status === 'healthy') {
@@ -116,7 +116,7 @@
                 }
             } catch (error) {
                 console.error('Health check failed:', error);
-                statusText.textContent = '❌ Cannot connect to backend. Make sure the backend server is running on http://localhost:8000';
+                statusText.textContent = '❌ Cannot connect to backend. Make sure the backend server is running on https://tabiqchohan-rag-chatbot.hf.space';
                 document.getElementById('status').className = 'status error';
             }
         }
@@ -137,7 +137,7 @@
 
             try {
                 // Try the search endpoint instead of chat endpoint
-                const response = await fetch('http://localhost:8000/retrieval/search', {
+                const response = await fetch('https://tabiqchohan-rag-chatbot.hf.space/retrieval/search', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

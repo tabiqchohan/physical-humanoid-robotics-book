@@ -42,7 +42,7 @@ def search_knowledge_base(query: str, top_k: int = 5) -> Dict[str, Any]:
     """
     # In a real implementation, you would call your backend API here
     # For this example, we'll simulate the API call
-    backend_url = "http://localhost:8000/retrieval/search"
+    backend_url = "https://tabiqchohan-rag-chatbot.hf.space/retrieval/search"
 
     payload = {
         "query": query,
