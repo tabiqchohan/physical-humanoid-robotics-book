@@ -11,7 +11,7 @@ const ChatWidget = () => {
 
   useEffect(() => setIsClient(true), []);
 
-  if (!isClient) return null; // Do not render on server
+  if (!isClient) return null; // Server-side safe
 
   const backendUrl = import.meta.env.REACT_APP_BACKEND_URL || "https://tabiqchohan-rag-chatbot.hf.space";
 
