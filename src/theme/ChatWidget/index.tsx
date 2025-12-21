@@ -9,11 +9,9 @@ const ChatWidget = () => {
   const { selectedText } = useTextSelection();
   const [isClient, setIsClient] = useState(false);
 
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
+  useEffect(() => setIsClient(true), []);
 
-  if (!isClient) return null;
+  if (!isClient) return null; // Do not render during SSR
 
   return (
     <ChatProvider>
