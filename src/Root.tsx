@@ -6,10 +6,7 @@ type RootProps = { children: React.ReactNode };
 export default function Root({ children }: RootProps) {
   const [isClient, setIsClient] = useState(false);
 
-  // useEffect runs only on client
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
+  useEffect(() => setIsClient(true), []);
 
   return (
     <>
