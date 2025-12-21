@@ -13,7 +13,8 @@ const ChatWidget = () => {
 
   if (!isClient) return null; // Server-side safe
 
-  const backendUrl = import.meta.env.REACT_APP_BACKEND_URL || "https://tabiqchohan-rag-chatbot.hf.space";
+  // Use a fixed URL that will be replaced at runtime or use a default
+  const backendUrl = "https://tabiqchohan-rag-chatbot.hf.space";
 
   return (
     <ChatProvider>

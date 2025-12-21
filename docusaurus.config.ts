@@ -136,7 +136,6 @@ const config: Config = {
 
   // Optimize memory usage
   trailingSlash: true,
-  onBrokenLinks: 'warn',
 
   themes: [
     '@docusaurus/theme-mermaid',
@@ -158,13 +157,14 @@ const config: Config = {
   //   ],
   // ],
 
-  // themes: [
-  //   '@docusaurus/theme-mermaid',
-  // ],
-
   clientModules: [
     require.resolve('./src/Root.tsx'),
   ],
+
+  // Pass environment variables to the client
+  customFields: {
+    backendUrl: process.env.REACT_APP_BACKEND_URL || "https://tabiqchohan-rag-chatbot.hf.space",
+  },
 
   // stylesheets: [
   //   {
