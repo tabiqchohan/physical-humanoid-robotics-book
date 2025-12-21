@@ -5,22 +5,19 @@ import { SelectedTextBanner } from '../../components/SelectedTextBanner';
 import { useTextSelection } from '../../hooks/useTextSelection';
 import './styles.css';
 
-const ChatWidget = ({ backendUrl }: { backendUrl?: string }) => {
+const ChatWidget = () => {
   const { selectedText } = useTextSelection();
   const [isClient, setIsClient] = useState(false);
 
-  // Ensure widget only renders on client
   useEffect(() => {
     setIsClient(true);
   }, []);
-
-  const finalBackendUrl = backendUrl || "https://tabiqchohan-rag-chatbot.hf.space";
 
   if (!isClient) return null;
 
   return (
     <ChatProvider>
-      <div className="chat-widget-container" data-backend-url={finalBackendUrl}>
+      <div className="chat-widget-container">
         {selectedText && <SelectedTextBanner />}
         <ChatContainer />
       </div>
