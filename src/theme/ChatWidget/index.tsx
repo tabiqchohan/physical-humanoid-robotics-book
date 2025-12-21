@@ -13,9 +13,11 @@ const ChatWidget = () => {
 
   if (!isClient) return null; // Do not render on server
 
+  const backendUrl = import.meta.env.REACT_APP_BACKEND_URL || "https://tabiqchohan-rag-chatbot.hf.space";
+
   return (
     <ChatProvider>
-      <div className="chat-widget-container">
+      <div className="chat-widget-container" data-backend-url={backendUrl}>
         {selectedText && <SelectedTextBanner />}
         <ChatContainer />
       </div>
