@@ -31,3 +31,7 @@ export interface ChatState {
   selectedText?: string | null; // currently selected text on the page
   messages: Message[];     // array of messages in the conversation
 }
+export interface QueryRequest {
+  query: string;             // user ka input
+  context?: string | null;   // optional context
+}
