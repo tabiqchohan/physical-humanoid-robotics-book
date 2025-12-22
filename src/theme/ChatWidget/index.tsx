@@ -13,8 +13,13 @@ const ChatWidget = () => {
 
   if (!isClient) return null; // Server-side safe
 
-  // Use a fixed URL that will be replaced at runtime or use a default
-  const backendUrl = "https://tabiqchohan-rag-chatbot.hf.space";
+  // Use the backend URL from the Docusaurus config or fallback to default
+  const backendUrl =
+    typeof window !== 'undefined'
+      ? (window as any).docusaurusConfig?.customFields?.backendUrl ||
+        process.env.REACT_APP_BACKEND_URL ||
+        'https://tabiqchohan-rag-chatbot.hf.space'
+      : 'https://tabiqchohan-rag-chatbot.hf.space';
 
   return (
     <ChatProvider>
