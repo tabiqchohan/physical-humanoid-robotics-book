@@ -12,7 +12,7 @@ const config: Config = {
   organizationName: 'tabiqchohan',
   projectName: 'physical-humanoid-robotics-book',
 
-  // 🔥 IMPORTANT: build fail nahi hogi
+  // ✅ Ignore broken links and markdown links to prevent build failure
   onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'ignore',
 
@@ -30,10 +30,7 @@ const config: Config = {
           path: 'docs',
           include: ['**/*.md', '**/*.mdx'],
         },
-
-        // ✅ blog disabled properly
-        blog: false,
-
+        blog: false, // blog disabled
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
