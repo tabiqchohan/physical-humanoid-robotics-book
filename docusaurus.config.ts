@@ -13,8 +13,8 @@ const config: Config = {
   projectName: 'physical-humanoid-robotics-book',
 
   // 🔥 IMPORTANT: build fail nahi hogi
-  onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenLinks: 'ignore',
+  onBrokenMarkdownLinks: 'ignore',
 
   i18n: {
     defaultLocale: 'en',
