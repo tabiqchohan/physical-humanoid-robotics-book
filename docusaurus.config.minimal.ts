@@ -13,7 +13,6 @@ const config: Config = {
 
   // Single declaration
   onBrokenLinks: 'ignore',
-  onBrokenMarkdownLinks: 'warn',
 
   i18n: {
     defaultLocale: 'en',
@@ -70,6 +69,14 @@ const config: Config = {
     prism: {
       theme: require('prism-react-renderer').themes.github,
       darkTheme: require('prism-react-renderer').themes.dracula,
+    },
+  },
+
+  markdown: {
+    mermaid: true,
+    hooks: {
+      onBrokenMarkdownImages: 'ignore',
+      onBrokenMarkdownLinks: 'warn',
     },
   },
 

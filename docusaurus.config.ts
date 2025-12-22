@@ -14,7 +14,6 @@ const config: Config = {
 
   // ✅ Ignore broken links and markdown links to prevent build failure
   onBrokenLinks: 'ignore',
-  onBrokenMarkdownLinks: 'ignore',
 
   i18n: {
     defaultLocale: 'en',
@@ -89,6 +88,14 @@ const config: Config = {
   },
 
   trailingSlash: true,
+
+  markdown: {
+    mermaid: true,
+    hooks: {
+      onBrokenMarkdownImages: 'ignore',
+      onBrokenMarkdownLinks: 'ignore',
+    },
+  },
 
   themes: ['@docusaurus/theme-mermaid'],
 

@@ -13,7 +13,6 @@ const config: Config = {
   projectName: 'physical-humanoid-robotics-book',
 
   onBrokenLinks: 'ignore',
-  onBrokenMarkdownLinks: 'ignore',
 
   i18n: { defaultLocale: 'en', locales: ['en'] },
 
@@ -113,6 +112,14 @@ const config: Config = {
       { name: 'twitter:card', content: 'summary_large_image' },
       { name: 'twitter:site', content: '@your_handle' },
     ],
+  },
+
+  markdown: {
+    mermaid: true,
+    hooks: {
+      onBrokenMarkdownImages: 'ignore',
+      onBrokenMarkdownLinks: 'ignore',
+    },
   },
 
   trailingSlash: true,
