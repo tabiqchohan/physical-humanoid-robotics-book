@@ -11,7 +11,8 @@ const config: Config = {
   organizationName: 'your-github-org',
   projectName: 'physical-ai-robotics',
 
-  onBrokenLinks: 'warn', // Changed from 'throw' to reduce memory usage
+  // Single declaration
+  onBrokenLinks: 'ignore',
   onBrokenMarkdownLinks: 'warn',
 
   i18n: {
@@ -25,14 +26,12 @@ const config: Config = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          // Removed math plugins to reduce memory usage
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
           path: 'docs',
           include: ['**/*.md', '**/*.mdx'],
-          exclude: [],
         },
-        blog: false, // Disabled blog to reduce memory usage
+        blog: false,
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -45,22 +44,10 @@ const config: Config = {
 
     navbar: {
       title: 'Physical AI & Humanoid Robotics',
-      logo: {
-        alt: 'My Site Logo',
-        src: 'img/logo.svg',
-      },
+      logo: { alt: 'Logo', src: 'img/logo.svg' },
       items: [
-        {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
-          position: 'left',
-          label: 'Book',
-        },
-        {
-          href: 'https://github.com/facebook/docusaurus',
-          label: 'GitHub',
-          position: 'right',
-        },
+        { type: 'docSidebar', sidebarId: 'tutorialSidebar', position: 'left', label: 'Book' },
+        { href: 'https://github.com/facebook/docusaurus', label: 'GitHub', position: 'right' },
       ],
     },
 
@@ -76,14 +63,8 @@ const config: Config = {
             { label: 'Twitter', href: 'https://twitter.com/docusaurus' },
           ],
         },
-        {
-          title: 'More',
-          items: [
-            { label: 'GitHub', href: 'https://github.com/facebook/docusaurus' },
-          ],
-        },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc.`,
     },
 
     prism: {
@@ -92,17 +73,9 @@ const config: Config = {
     },
   },
 
-  // Reduced features to save memory
   trailingSlash: true,
-  onBrokenLinks: 'warn',
-
-  plugins: [
-    // Removed client redirects to save memory
-  ],
-
-  themes: [
-    // Removed mermaid theme to save memory
-  ],
+  plugins: [],
+  themes: [],
 };
 
 export default config;
