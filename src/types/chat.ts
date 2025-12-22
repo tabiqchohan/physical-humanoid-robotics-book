@@ -35,3 +35,7 @@ export interface QueryRequest {
   query: string;             // user ka input
   context?: string | null;   // optional context
 }
+export interface QueryResponse {
+  answer: string;                 // chatbot ka reply
+  sources?: SourceReference[];    // optional sources from RAG
+}
